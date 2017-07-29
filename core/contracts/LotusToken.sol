@@ -141,6 +141,7 @@ contract LotusToken is StandardToken, SafeMath {
     string public symbol = "LTS";
 
     function LotusToken() {
+        totalSupply =  1000000;
         balances[tx.origin] = 1000000;
     }
 
