@@ -3,3 +3,6 @@ populus==2.0.0a4
 # link system python packages
 vext==0.6.9
 vext.gi==0.6.8
+
+# dev
+ipdb==0.10.3
