@@ -1,18 +1,10 @@
 import gi
 import os
 
-from populus import Project
+from utils import get_chain
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk  # noqa
-
-
-def get_chain():
-    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-             '..', '..', 'core'))
-    project = Project()
-    chain_name = os.environ.get('CHAIN', 'external')
-    return project.get_chain(chain_name)
 
 
 class WalletWindow(Gtk.Window):

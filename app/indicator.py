@@ -32,6 +32,9 @@ class LotusIndicator:
         item_wallet = Gtk.MenuItem('Wallet')
         item_wallet.connect("activate", self.app.wallet_window.cb_show, '')
 
+        item_developer = Gtk.MenuItem('Developer Tools')
+        item_developer.connect("activate", self.app.dev_window.cb_show, '')
+
         item_library = Gtk.MenuItem('Library')
         item_settings = Gtk.MenuItem('Settings')
 
@@ -41,6 +44,7 @@ class LotusIndicator:
         menu.append(item_store)
         menu.append(item_wallet)
         menu.append(item_library)
+        menu.append(item_developer)
         menu.append(item_settings)
         menu.append(item_exit)
         menu.show_all()
