@@ -27,10 +27,11 @@
 
 2. Deploy contracts:
 
-     `> python deploy.py`
+    ```
+    > python syncdb.py
+    > python deploy.py
+    ```
 
-3. Create `.env` file based on `env.example` and update `TOKEN_CONTRACT_ADDRESS` variable
-
-4. Run app:
+3. Run app:
 
      `> ./app.run`

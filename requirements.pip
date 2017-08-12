@@ -1,4 +1,5 @@
 populus==2.0.0a4
+SQLAlchemy==1.1.13
 
 # link system python packages
 vext==0.6.9
