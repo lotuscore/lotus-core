@@ -7,7 +7,7 @@ import os
 from populus import Project
 from populus.utils.cli import get_unlocked_default_account_address
 
-from db import DB, Settings
+from app.db import DB, Settings
 from app.utils import check_succesful_tx
 
 db = DB()
@@ -47,7 +47,7 @@ def main():
         print("Token contract address is", token_address)
 
         # update local database
-        settings = db.session.query(Settings).all()[0]
+        settings = db.session.query(Settings).first()
         settings.token_address = token_address
         db.session.commit()
 

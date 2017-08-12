@@ -26,11 +26,3 @@ def check_succesful_tx(web3: Web3, txid: str, timeout=180) -> dict:
     # EVM has only one error mode and it's consume all gas
     assert txinfo["gas"] != receipt["gasUsed"]
     return receipt
-
-
-def get_chain():
-    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-             '..', '..', 'core'))
-    project = Project()
-    chain_name = os.environ.get('CHAIN', 'external')
-    return project.get_chain(chain_name)
