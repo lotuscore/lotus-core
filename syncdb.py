@@ -9,6 +9,5 @@ if db.session.query(Settings).count() == 0:
         token_address='',
         library_address=''
     )
-
-db.session.add(settings)
-db.session.commit()
+    db.session.add(settings)
+    db.session.commit()

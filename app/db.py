@@ -15,7 +15,8 @@ class Settings(Base):
     library_address = Column(String)
 
     def __repr__(self):
-        return self.address
+        return 'chain: {}\nToken Contract: {}'.format(
+            self.chain, self.token_address)
 
 
 class DB():
