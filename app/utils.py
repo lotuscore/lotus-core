@@ -1,8 +1,15 @@
 import os
 
+from db import DB, Settings
 from populus import Project
 from populus.utils.wait import wait_for_transaction_receipt
 from web3 import Web3
+
+db = DB()
+
+
+def get_settings():
+    return db.session.query(Settings).first()
 
 
 def get_chain():
@@ -26,3 +33,22 @@ def check_succesful_tx(web3: Web3, txid: str, timeout=180) -> dict:
     # EVM has only one error mode and it's consume all gas
     assert txinfo["gas"] != receipt["gasUsed"]
     return receipt
+
+
+def touch_library():
+    settings = get_settings()
+    if settings.library_address:
+        return
+
+    with get_chain() as chain:
+        Library = chain.provider.get_contract_factory('Library')
+        web3 = chain.web3
+        beneficiary = web3.eth.accounts[1]
+        assert beneficiary
+        txhash = Library.deploy(transaction={
+            "from": beneficiary
+        })
+        receipt = check_succesful_tx(web3, txhash)
+        library_address = receipt['contractAddress']
+        settings.library_address = library_address
+        db.session.commit()

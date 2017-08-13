@@ -1,6 +1,8 @@
 import gi
 import signal
 
+from utils import touch_library
+
 from windows import WalletWindow, DevToolsWindow
 from indicator import LotusIndicator
 
@@ -23,5 +25,6 @@ class LotusApp(Gtk.Application):
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal.SIG_DFL)
+    touch_library()
     app = LotusApp()
     app.run()

@@ -1,12 +1,9 @@
 import gi
 
-from db import DB, Settings
-from utils import get_chain
+from utils import get_chain, get_settings
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk  # noqa
-
-db = DB()
 
 
 class WalletWindow(Gtk.Window):
@@ -26,7 +23,7 @@ class WalletWindow(Gtk.Window):
     def load_wallet(self):
         with get_chain() as chain:
             LotusToken = chain.provider.get_contract_factory('LotusToken')
-            settings = db.session.query(Settings).first()
+            settings = get_settings()
             token_address = settings.token_address
             self.lotus_token = LotusToken(address=token_address)
             self.account = chain.web3.eth.coinbase
