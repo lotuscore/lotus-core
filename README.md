@@ -25,7 +25,7 @@
 
      `> testrpc`
 
-2. Deploy contracts:
+2. Deploy:
 
     ```
     > python syncdb.py
