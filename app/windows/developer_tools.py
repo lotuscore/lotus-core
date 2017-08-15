@@ -1,6 +1,6 @@
 import gi
 
-from utils import check_succesful_tx, get_chain
+from utils import check_succesful_tx, get_chain, get_settings
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk  # noqa
@@ -21,6 +21,7 @@ class DevToolsWindow(Gtk.Window):
         with get_chain() as chain:
             # Load Populus contract proxy classes
             Cartridge = chain.provider.get_contract_factory('Cartridge')
+            Library = chain.provider.get_contract_factory('Library')
 
             web3 = chain.web3
             print("Web3 provider is", web3.currentProvider)
@@ -44,9 +45,9 @@ class DevToolsWindow(Gtk.Window):
             cartridge_address = receipt["contractAddress"]
             print("Cartridge contract address is", cartridge_address)
 
-            # testing contract
-            cartridge = Cartridge(address=cartridge_address)
-            print("Cartridge name:", cartridge.call().get_name())
+            settings = get_settings()
+            library = Library(address=settings.library_address)
+            library.transact().add(cartridge_address, '0x0')
 
     def create_ui(self):
         # Add header bar
