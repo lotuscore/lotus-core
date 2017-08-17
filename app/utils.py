@@ -1,6 +1,9 @@
 import os
 
-from db import DB, Settings
+try:
+    from db import DB, Settings
+except ImportError:
+    from app.db import DB, Settings  # exception occurs when deploy
 from populus import Project
 from populus.utils.wait import wait_for_transaction_receipt
 from web3 import Web3
