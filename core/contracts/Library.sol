@@ -9,12 +9,11 @@ contract Library {
 
     Cartridge[] user_library;
 
-    function list() returns (address[]) {
-        address[] list;
-        for (uint i = 1; i < user_library.length; i++) {
-            list.push(user_library[i].publisher);
+    function list() public returns (address[] memory _list) {
+        _list = new address[](user_library.length);
+        for (uint i = 0; i < user_library.length; i++) {
+            _list[i] = user_library[i].publisher;
         }
-        return list;
     }
 
     function add(address publisher, bytes32 signature) {

@@ -1,7 +1,7 @@
 import gi
 
-from db import DB, Settings
-from utils import get_chain
+from db import DB
+from utils import get_chain, get_settings
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk  # noqa
@@ -17,14 +17,13 @@ class LibraryWindow(Gtk.Window):
 
         self.app = root
         self.set_title('{} - Library'.format(self.app.name))
-
         self.load_library()
         self.create_ui()
 
     def load_library(self):
         with get_chain() as chain:
             Library = chain.provider.get_contract_factory('Library')
-            settings = db.session.query(Settings).first()
+            settings = get_settings()
             library_address = settings.library_address
             self.library = Library(address=library_address)
 
