@@ -10,6 +10,8 @@ contract Cartridge {
     uint platforms;
     uint256 price;
 
+    mapping(address => address) public copies;
+
     function Cartridge(string _name, bytes32 _genre, bytes32 _rating, uint _platforms, uint256 _price) {
         name = _name;
         genre = _genre;
@@ -18,7 +20,17 @@ contract Cartridge {
         price = _price;
     }
 
-    function get_name() returns (string) {
+    function buy(Library libraryAddress) payable {
+        require(msg.value >= price);
+        copies[libraryAddress] = msg.sender;
+        Library(libraryAddress).add(address(this), '');
+    }
+
+    function validCopy(address libraryAddress) returns (bool) {
+        return copies[libraryAddress] != address(0x0);
+    }
+
+    function getName() returns (string) {
         return name;
     }
 }
