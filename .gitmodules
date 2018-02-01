@@ -1,0 +1,3 @@
+[submodule "/home/mauricio/Projects/lotus-core/token"]
+	path = /home/mauricio/Projects/lotus-core/token
+	url = git@code.talpor.com:lotus/lotus-contracts.git

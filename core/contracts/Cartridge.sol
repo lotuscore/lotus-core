@@ -1,7 +1,6 @@
 pragma solidity ^0.4.2;
 
 import "./Library.sol";
-import "./LotusToken.sol";
 
 contract Cartridge {
     string name;
