@@ -1,35 +1,37 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.11;
 
-import "./Library.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./Game.sol";
 
-contract Cartridge {
-    string name;
-    bytes32 genre;
-    bytes32 rating;
-    uint platforms;
-    uint256 price;
+contract Cartridge is Ownable {
+    Game public game;
+    bytes public signature;
+    address public originalOwner;
 
-    mapping(address => address) public copies;
-
-    function Cartridge(string _name, bytes32 _genre, bytes32 _rating, uint _platforms, uint256 _price) {
-        name = _name;
-        genre = _genre;
-        rating = _rating;
-        platforms = _platforms;
-        price = _price;
+    struct Endorsement {
+        address owner;
+        address newOwner;
+        bytes signature;
     }
 
-    function buy(Library libraryAddress) payable {
-        require(msg.value >= price);
-        copies[libraryAddress] = msg.sender;
-        Library(libraryAddress).add(address(this), '');
+    Endorsement[] public endorsements;
+
+    function Cartridge(address _owner, bytes _signature) {
+        game = Game(msg.sender);
+        originalOwner = _owner;
+        owner = _owner;
+        signature = _signature;
     }
 
-    function validCopy(address libraryAddress) returns (bool) {
-        return copies[libraryAddress] != address(0x0);
+    /**
+    * @dev Allows the current owner to transfer control of the cartridge to a newOwner.
+    * @param newOwner The address to transfer ownership to.
+    * @param endorsement The newOwner address signed by the cartridge owner.
+    */
+    function transferOwnership(address newOwner, bytes endorsement) onlyOwner public {
+        // require(validSignature(owner, newOwner, endorsement))
+        endorsements.push(Endorsement(owner, newOwner, endorsement));
+        return super.transferOwnership(newOwner);
     }
 
-    function getName() returns (string) {
-        return name;
-    }
 }
