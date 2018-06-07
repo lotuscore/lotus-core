@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.18;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./Game.sol";
@@ -7,6 +7,7 @@ contract Cartridge is Ownable {
     Game public game;
     bytes public signature;
     address public originalOwner;
+    string data;
 
     struct Endorsement {
         address owner;
@@ -16,11 +17,16 @@ contract Cartridge is Ownable {
 
     Endorsement[] public endorsements;
 
-    function Cartridge(address _owner, bytes _signature) {
+    function Cartridge(address _owner, bytes _signature) public {
         game = Game(msg.sender);
         originalOwner = _owner;
         owner = _owner;
         signature = _signature;
+    }
+
+    function getData() public view {
+        require(msg.sender == owner || msg.sender == game.publisher);
+        return data;
     }
 
     /**
