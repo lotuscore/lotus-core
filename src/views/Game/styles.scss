@@ -1,0 +1,27 @@
+#Game {
+    font-family: Lato, sans-serif;
+    .breadcrumbs {
+        height: 40px;
+        background-color: #f1f1f1;
+        padding-top: 25px;
+        .address {
+            display: inline-block;
+            span {
+                padding-left: 10px;
+            }
+        }
+        .breadcrumb {
+            float: right;
+            ul {
+                list-style: none;
+                li {
+                    padding: 0 3px;
+                    max-width: 180px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

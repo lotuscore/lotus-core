@@ -24,8 +24,8 @@ contract Cartridge is Ownable {
         signature = _signature;
     }
 
-    function getData() public view {
-        require(msg.sender == owner || msg.sender == game.publisher);
+    function getData() public view returns (string) {
+        require(msg.sender == owner || msg.sender == address(game.publisher));
         return data;
     }
 

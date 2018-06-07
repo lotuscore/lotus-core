@@ -1,0 +1,30 @@
+<div id="CreateGame">
+    <div class="container">
+        <label for="title">title</label>
+        <input type="text" onChange="{this.set('title')}" value="{this.state.title}" id="title" />
+        <label for="genre">genre</label>
+        <select name="genre" id="genre" onChange="{this.set('genre')}">
+            <option value="">--</option>
+            <option value="1">Action</option>
+            <option value="2">Adventure</option>
+            <option value="3">Terror</option>
+        </select>
+        <label for="rating">rating</label>
+        <select name="rating" id="rating" onChange="{this.set('rating')}">
+            <option value="">--</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+        </select>
+        <label for="platforms">platforms</label>
+        <input type="text" onChange="{this.set('platforms')}" id="platforms" />
+        <label for="number">price</label>
+        <input type="text" onChange="{this.set('price')}" id="price" />
+        <label for="signGuard">signGuard</label>
+
+        <input type="checkbox" onChange="{this.set('signGuard')}" id="signGuard" />
+        <label for="publisher">publisher</label>
+        <input type="text" onChange="{this.set('publisher')}" value="{this.state.publisher}" id="publisher" />
+        <button onClick="{this.createGame}">Create</button>
+    </div>
+</div>

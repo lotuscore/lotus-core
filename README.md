@@ -1,37 +1,35 @@
 # Lotus Core #
 
-### Installations
+### Getting Started
 
-1. Install OS Dependencies:
+### Install OS requirements:
 
-    `> sh bootstrap.sh` (not included npm)
+- **elasticsearch** [https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html]()
+- **ganache-cli** [https://github.com/trufflesuite/ganache-cli]()
+- **solc** [http://solidity.readthedocs.io/en/v0.4.24/installing-solidity.html]()
+- **truffle** [http://truffleframework.com/docs/getting_started/installation]()
+- **yarn** [https://yarnpkg.com/lang/en/]()
 
-2. Install virtualenv + virtualenvwrapper: https://github.com/brainsik/virtualenv-burrito
+### Setup Project
 
-3. Create virtualenv and install python dependencies
+```
+> yarn install
+> truffle compile
+```
 
-    ```
-    mkvirtualenv lotus-core --python="$(which python3)"
-    pip install -r requirements.pip
-    ```
+### Start Project
 
-4. Install testprc
+```
+> ganache-cli
+> yarn start
+```
 
-    `npm install -g ethereumjs-testrpc`
+To start deploying a Game contract go to `/publishers/<given-ganache-public-address>` in the local server and start to test!
 
-### Run Project
+The explorer idea is to make queries over a local (and smaller) copy of the blockchain, this copy is over elasticsearch, and to synchronize it with the current blockchain state it is necessary to execute `yarn syncdb` each time.
 
-1. Run testrpc:
+### Run tests:
 
-     `> testrpc`
-
-2. Deploy:
-
-    ```
-    > python syncdb.py
-    > python deploy.py
-    ```
-
-3. Run app:
-
-     `> ./app.run`
+```
+> truffle tests
+```

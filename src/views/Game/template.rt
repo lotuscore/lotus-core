@@ -1,0 +1,36 @@
+<rt-import name="GameDetails" from="components/GameDetails"/>
+<rt-import name="Header" from="components/Header"/>
+<rt-import name="TransactionButton" from="components/TransactionButton"/>
+
+<rt-import name="Link" from="react-router-dom"/>
+
+<div id="Game">
+    <Header />
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="address">
+                <b>Game Address</b>
+                <span>{this.props.address}</span>
+            </div>
+            <div class="breadcrumb">
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li>/</li>
+                    <li><Link to="/games">Games</Link></li>
+                    <li>/</li>
+                    <li>{this.props.address}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <GameDetails game={this.state.game} />
+    <div class="container">
+        <TransactionButton
+          rt-if="this.state.game"
+          web3={this.props.web3}
+          local={this.props.local}
+          address={this.props.address}
+          amount={this.state.game.instance.price}
+          text='Buy'></TransactionButton>
+    </div>
+</div>

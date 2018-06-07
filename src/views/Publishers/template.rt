@@ -1,0 +1,7 @@
+<rt-import name="PublisherList" from="components/PublisherList"/>
+<rt-import name="Header" from="components/Header"/>
+
+<div id="Publishers">
+    <Header />
+    <PublisherList publishers={this.state.publishers} />
+</div>

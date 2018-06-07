@@ -1,0 +1,21 @@
+<rt-import name="Link" from="react-router-dom"/>
+
+<div id="Header">
+    <div class="container">
+        <div class="logo">
+            <img src="{process.env.PUBLIC_URL + '/logo.png'}" alt="lotuscore">
+            <h1>Lotus Core Explorer</h1>
+        </div>
+        <div class="menu">
+            <div class="search">
+                <input type="text" placeholder="Search by Address">
+                <button>Go</button>
+            </div>
+            <ul>
+                <li><Link to="/" class="active">Home</Link></li>
+                <li><Link to="/publishers">Publishers</Link></li>
+                <li><Link to="/games">Games</Link></li>
+            </ul>
+        </div>
+    </div>
+</div>

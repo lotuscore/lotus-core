@@ -1,0 +1,7 @@
+<rt-import name="GameList" from="components/GameList"/>
+<rt-import name="Header" from="components/Header"/>
+
+<div id="Games">
+    <Header />
+    <GameList games={this.state.games} />
+</div>

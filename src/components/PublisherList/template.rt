@@ -1,0 +1,10 @@
+<rt-import name="Link" from="react-router-dom"/>
+
+<div id="PublisherList">
+    <div class="container">
+        <h1>Publisher List</h1>
+        <ul>
+            <li rt-repeat="publisher in this.props.publishers" key="{publisherIndex}"><Link to="/publishers/{publisher.address}">{publisher.address}</Link> - {publisher.address}</li>
+        </ul>
+    </div>
+</div>

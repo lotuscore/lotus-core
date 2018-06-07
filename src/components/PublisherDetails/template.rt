@@ -1,0 +1,31 @@
+<rt-import name="CreateGame" from="components/CreateGame"/>
+
+<div id="PublisherDetails">
+    <div class="container">
+        <h2>Overview <span rt-if="this.state.owner">(it's you)</span></h2>
+        <div class="overview">
+            <ul class="left">
+                <li><span class="label">Balance:</span> 10 ETH</li>
+                <li><span class="label">Token balances:</span> 10 <span class="tag">LTS</span> 200 <span class="tag">DAI</span></li>
+            </ul>
+            <ul class="right">
+                <li><span class="label">In development Games:</span> 0</li>
+                <li><span class="label">Prototype Games:</span> 1</li>
+                <li><span class="label">Released Games:</span> 0</li>
+            </ul>
+        </div>
+
+        <ul class="tabs">
+            <li>Transactions</li>
+            <li class="active" rt-if="this.state.owner">Publish Game</li>
+            <li>Comments</li>
+        </ul>
+
+        <div class="create-form" rt-if="this.state.owner">
+            <CreateGame
+              web3={this.props.web3}
+              local={this.props.local}
+              address={this.props.address} />
+        </div>
+    </div>
+</div>

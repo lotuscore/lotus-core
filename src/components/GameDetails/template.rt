@@ -1,0 +1,16 @@
+<rt-import name="Link" from="react-router-dom"/>
+
+<div id="GameDetails">
+    <div class="container" rt-if="this.props.game" rt-scope="this.props.game as game">
+        <h1>{game.instance.title}</h1>
+        <p>{game.receipt.contractAddress}</p>
+        <ul>
+            <li>genre: {game.instance.genre}</li>
+            <li>platforms: {game.instance.platforms}</li>
+            <li>price: {game.instance.price}</li>
+            <li>publisher: <Link to="/publishers/{game.instance.publisher}">{game.instance.publisher}</Link></li>
+            <li>rating: {game.instance.rating}</li>
+            <li>DRM: {String(game.instance.signGuard)}</li>
+        </ul>
+    </div>
+</div>

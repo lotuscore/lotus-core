@@ -1,0 +1,3 @@
+<div id="TransactionButton">
+    <button onClick="{this.sendTransaction}">{this.props.text} by {this.props.amount}</button>
+</div>

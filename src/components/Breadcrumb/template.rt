@@ -1,0 +1,19 @@
+<rt-import name="Link" from="react-router-dom"/>
+
+<div id="Breadcrumb">
+    <div class="container">
+        <div class="title">
+            <span class="title">{this.props.title}</span>
+            <span class="address">{this.props.address}</span>
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <rt-virtual rt-repeat="location in this.props.path">
+                    <li><Link to="{location.link}">{location.title}</Link></li>
+                    <li>/</li>
+                </rt-virtual>
+                <li>{this.props.actualLocation}</li>
+            </ul>
+        </div>
+    </div>
+</div>

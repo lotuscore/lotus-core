@@ -1,0 +1,59 @@
+@import '../../shared/styles/_vars.scss';
+
+#Header {
+    background-color: $background-color;
+    height: 90px;
+    .logo {
+        display: inline-block;
+        color: white;
+        img {
+            display: inline-block;
+            width: 62px;
+            margin: 14px 0;
+        }
+        h1 {
+            display: inline-block;
+            vertical-align: top;
+            margin: 31px 0 0 12px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: $warm-grey;
+            font-size: 23px;
+        }
+    }
+    .menu {
+        float: right;
+        text-align: right;
+        input, button {
+            height: 26px;
+            border: none;
+        }
+        input {
+            padding: 0 8px;
+            width: 300px;
+            margin-top: 12px;
+        }
+        button {
+            background-color: $button-green;
+            color: white;
+            text-transform: uppercase;
+        }
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
+                margin: 15px 0 0 17px;
+                text-transform: uppercase;
+                a {
+                    color: $warm-grey;
+                    text-decoration: none;
+                    padding-bottom: 17px;
+                    &.active {
+                        color: $dark-sky-blue;
+                        border-bottom: 3px solid $dark-sky-blue;
+                    }
+                }
+            }
+        }
+    }
+}

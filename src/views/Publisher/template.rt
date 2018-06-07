@@ -1,0 +1,17 @@
+<rt-import name="Breadcrumb" from="components/Breadcrumb"/>
+<rt-import name="Header" from="components/Header"/>
+<rt-import name="Link" from="react-router-dom"/>
+<rt-import name="PublisherDetails" from="components/PublisherDetails"/>
+
+<div id="Publisher">
+    <Header />
+    <Breadcrumb
+      title="Publisher Address"
+      address="{this.props.address}"
+      path="{[{title: 'Home', link: '/'}, {title: 'Publishers', link: '/publishers'}]}"
+      actualLocation="{this.props.address}" />
+    <PublisherDetails
+      web3={this.props.web3}
+      local={this.props.local}
+      address={this.props.address} />
+</div>
